@@ -92,10 +92,9 @@ public class InfoUtils {
         return commitInfo;
     }
 
-    public static ReleaseInfo createReleaseInfo(Repo repo, String id) {
+    public static ReleaseInfo createReleaseInfo(Repo repo) {
         ReleaseInfo releaseInfo = new ReleaseInfo();
         releaseInfo.repoInfo = createRepoInfo(repo);
-        releaseInfo.id = id;
         return releaseInfo;
     }
 }

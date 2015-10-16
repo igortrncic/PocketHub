@@ -25,6 +25,7 @@ import com.github.pockethub.ui.FragmentPagerAdapter;
 import com.github.pockethub.ui.code.RepositoryCodeFragment;
 import com.github.pockethub.ui.commit.CommitListFragment;
 import com.github.pockethub.ui.issue.IssuesFragment;
+import com.github.pockethub.ui.release.ReleaseListFragment;
 
 /**
  * Adapter to view a repository's various pages
@@ -74,6 +75,8 @@ public class RepositoryPagerAdapter extends FragmentPagerAdapter {
             return resources.getString(R.string.tab_commits);
         case 3:
             return resources.getString(R.string.tab_issues);
+        case 4:
+            return resources.getString(R.string.tab_releases);
         default:
             return null;
         }
@@ -92,6 +95,8 @@ public class RepositoryPagerAdapter extends FragmentPagerAdapter {
             return commitsFragment;
         case 3:
             return new IssuesFragment();
+        case 4:
+            return new ReleaseListFragment();
         default:
             return null;
         }
@@ -99,7 +104,7 @@ public class RepositoryPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return hasIssues ? 4 : 3;
+        return hasIssues ? 5 : 4;
     }
 
     /**

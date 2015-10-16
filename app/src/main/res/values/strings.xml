@@ -87,6 +87,7 @@
     <string name="no_members">No Members</string>
     <string name="no_news">No News</string>
     <string name="no_commits">No Commits</string>
+    <string name="no_releases">No Releases</string>
     <!--  -->
 
 
@@ -276,6 +277,7 @@
     <string name="tab_code">code</string>
     <string name="tab_commits">commits</string>
     <string name="tab_issues">issues</string>
+    <string name="tab_releases">releases</string>
     <string name="tab_watched">watched</string>
     <string name="tab_assigned">assigned</string>
     <string name="tab_created">created</string>

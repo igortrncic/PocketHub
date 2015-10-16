@@ -7,7 +7,6 @@ import com.alorma.github.sdk.bean.info.RepoInfo;
 
 public class ReleaseInfo implements Parcelable {
     public RepoInfo repoInfo;
-    public String id;
 
     public ReleaseInfo() {
 
@@ -15,7 +14,6 @@ public class ReleaseInfo implements Parcelable {
 
     protected ReleaseInfo(Parcel in) {
         repoInfo = in.readParcelable(RepoInfo.class.getClassLoader());
-        id = in.readString();
     }
 
     @Override
@@ -26,7 +24,6 @@ public class ReleaseInfo implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeParcelable(repoInfo, flags);
-        dest.writeString(id);
     }
 
     @SuppressWarnings("unused")

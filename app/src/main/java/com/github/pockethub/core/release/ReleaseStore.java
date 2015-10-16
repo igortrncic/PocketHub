@@ -94,8 +94,7 @@ public class ReleaseStore extends ItemStore {
      * @return refreshed release
      * @throws IOException
      */
-    public Release refreshRelease(final Repo repo, final String id) throws IOException {
-        return addRelease(repo, new GetReleaseClient(context, InfoUtils.createReleaseInfo(repo, id))
-                .executeSync());
+    public Release refresh(final Repo repo, final String id) throws IOException {
+        return null;
     }
 }

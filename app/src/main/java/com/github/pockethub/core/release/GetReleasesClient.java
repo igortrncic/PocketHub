@@ -18,10 +18,6 @@ public class GetReleasesClient extends GithubClient<List<Release>> {
         this.releaseInfo = releaseInfo;
     }
 
-    private GetReleasesClient(Context context) {
-        super(context);
-    }
-
     @Override
     protected void executeService(RestAdapter restAdapter) {
         ReleaseService releaseService = restAdapter.create(ReleaseService.class);

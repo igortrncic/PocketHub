@@ -17,13 +17,13 @@ package com.github.pockethub;
 
 import android.content.Context;
 
-import com.alorma.github.sdk.bean.dto.response.Commit;
 import com.github.pockethub.accounts.AccountClient;
 import com.github.pockethub.accounts.AccountScope;
 import com.github.pockethub.accounts.GitHubAccount;
 import com.github.pockethub.core.commit.CommitStore;
 import com.github.pockethub.core.gist.GistStore;
 import com.github.pockethub.core.issue.IssueStore;
+import com.github.pockethub.core.release.ReleaseStore;
 import com.github.pockethub.persistence.OrganizationRepositories;
 import com.github.pockethub.sync.SyncCampaign;
 import com.google.inject.AbstractModule;
@@ -32,14 +32,10 @@ import com.google.inject.Provides;
 import com.google.inject.assistedinject.FactoryModuleBuilder;
 import com.google.inject.name.Named;
 
+import org.eclipse.egit.github.core.client.GitHubClient;
+
 import java.io.File;
 import java.lang.ref.WeakReference;
-
-import org.eclipse.egit.github.core.client.GitHubClient;
-import org.eclipse.egit.github.core.service.CommitService;
-import org.eclipse.egit.github.core.service.GistService;
-import org.eclipse.egit.github.core.service.IssueService;
-import org.eclipse.egit.github.core.service.PullRequestService;
 
 /**
  * Main module provide services and clients
@@ -51,6 +47,8 @@ public class PocketHubModule extends AbstractModule {
     private WeakReference<GistStore> gists;
 
     private WeakReference<CommitStore> commits;
+
+    private WeakReference<ReleaseStore> releases;
 
     @Override
     protected void configure() {
@@ -98,6 +96,16 @@ public class PocketHubModule extends AbstractModule {
         if (store == null) {
             store = new CommitStore(context);
             commits = new WeakReference<>(store);
+        }
+        return store;
+    }
+
+    @Provides
+    ReleaseStore releaseStore(Context context) {
+        ReleaseStore store = releases != null ? releases.get() : null;
+        if (store == null) {
+            store = new ReleaseStore(context);
+            releases = new WeakReference<>(store);
         }
         return store;
     }
