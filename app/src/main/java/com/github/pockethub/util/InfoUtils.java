@@ -6,6 +6,7 @@ import com.alorma.github.sdk.bean.dto.response.User;
 import com.alorma.github.sdk.bean.info.CommitInfo;
 import com.alorma.github.sdk.bean.info.IssueInfo;
 import com.alorma.github.sdk.bean.info.RepoInfo;
+import com.github.pockethub.core.release.ReleaseInfo;
 
 public class InfoUtils {
 
@@ -89,5 +90,12 @@ public class InfoUtils {
         commitInfo.repoInfo = createRepoInfo(repo);
         commitInfo.sha = sha;
         return commitInfo;
+    }
+
+    public static ReleaseInfo createReleaseInfo(Repo repo, String id) {
+        ReleaseInfo releaseInfo = new ReleaseInfo();
+        releaseInfo.repoInfo = createRepoInfo(repo);
+        releaseInfo.id = id;
+        return releaseInfo;
     }
 }
